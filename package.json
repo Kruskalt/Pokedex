@@ -1,0 +1,25 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "Listar pokemones, y poder cambiar de página. Ver detalles de 1 pokemón, incluyendo al menos 1 foto.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kruskalt/Pokedex.git"
+  },
+  "author": "nazareno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kruskalt/Pokedex/issues"
+  },
+  "homepage": "https://github.com/Kruskalt/Pokedex#readme",
+  "devDependencies": {
+    "cypress": "^13.6.1"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
+}
