@@ -2,55 +2,12 @@
 
 const URLAPI = "https://pokeapi.co/api/v2/pokemon"
 const offsetPagina=20
-let paginaActual;
+let paginaActual=1;
 let paginaAnterior;
 let paginaSiguiente;
 ///https://pokeapi.co/api/v2/pokemon?limit=20&offset=0
 
 pedirPagina(0)
-
-const $pageItems= document.querySelectorAll(".page-item a")
-
-$pageItems.forEach(elem=>{
-  $(elem).on("click",function () {
-    if (elem.textContent==="Previous" && paginaActual!=undefined && paginaActual!=0) {
-      pedirPagina((paginaAnterior-1)*offsetPagina)
-      let aux=paginaActual  
-      paginaActual=paginaAnterior
-      paginaSiguiente=aux
-      paginaAnterior=paginaActual-1
-      console.log(paginaActual)
-      console.log(paginaAnterior)
-      console.log(paginaSiguiente)
-    }
-
-    if (elem.textContent!="Previous") {
-      const numeroPagina= Number(elem.textContent)
-
-      paginaActual=numeroPagina
-      paginaAnterior=numeroPagina-1
-      paginaSiguiente=numeroPagina+1
-      console.log(paginaActual)
-      console.log(paginaAnterior)
-      console.log(paginaSiguiente)
-      pedirPagina((numeroPagina-1)*offsetPagina)
-    }
-    
-    
-
-    // if (elem.textContent==="Previous" & elem) {
-    //   numeroPagina=paginaActual
-    // }
-    
-    
-  })
-})
-
-
-
-
-
- 
 
 
 
