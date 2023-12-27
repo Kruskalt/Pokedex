@@ -1,4 +1,6 @@
 const $pageItems= document.querySelectorAll(".page-item a")
+const paginasMaximo=65
+
 
 $pageItems.forEach(elem=>{
   $(elem).on("click",function () {
@@ -14,7 +16,7 @@ $pageItems.forEach(elem=>{
 
 function moverseApaginaSiguiente(elem) {
   
-  
+  if (paginaSiguiente<=paginasMaximo && paginaSiguiente!=undefined) {
   paginaActual = paginaActual+1
   paginaAnterior = paginaActual-1;
   paginaSiguiente = paginaActual + 1;
@@ -23,6 +25,8 @@ function moverseApaginaSiguiente(elem) {
   console.log(paginaSiguiente);
   pedirPagina((paginaActual - 1) * offsetPagina);
   document.querySelector("#numero-pagina").textContent=`${paginaActual}/65`
+  }
+ 
 }
 
 function moverseApaginaAnterior() {
