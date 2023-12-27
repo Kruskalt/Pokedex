@@ -2,17 +2,17 @@
 
 const URLAPI = "https://pokeapi.co/api/v2/pokemon"
 const offsetPagina=20
+
 let paginaActual=1;
-let paginaAnterior;
-let paginaSiguiente;
+let paginaAnterior=0;
+let paginaSiguiente=2;
 ///https://pokeapi.co/api/v2/pokemon?limit=20&offset=0
 
 pedirPagina(0)
 
 
-
 function pedirPagina(pagina) {
-$("main").html('')
+$(".row").html('')
 fetch(`${URLAPI}?limit=20&offset=${pagina}`)
   .then(respuesta => respuesta.json())
   .then(respuestaJSON => {
@@ -23,23 +23,28 @@ fetch(`${URLAPI}?limit=20&offset=${pagina}`)
  
       fetch(`${respuestaJSON.results[i].url}`).then(pokemon => pokemon.json())
         .then(pokemonJSON => {
+
           const imagenPokemon = pokemonJSON.sprites.front_default
           const idPokemon = pokemonJSON.id
+          const nombrePokemon= pokemonJSON.species.name
+
           console.log(pokemonJSON)
           const card = $(`
-              <div class="card main__card" style="width: 18rem; display:inline-block">
+              <div class="col">
+              <div class="card main__card" style=" display:inline-block" >
                 <img src="${imagenPokemon}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">#${idPokemon}</h5>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    
                 </div>
+              </div>
               </div>
             `);
           card.on("click",function() {
-            click()
+            mostrarCartaPokemon(nombrePokemon)
           })
-         
-          $("main").append(card);
+          
+          $(".row").append(card);
       })
     }
 
@@ -50,8 +55,5 @@ fetch(`${URLAPI}?limit=20&offset=${pagina}`)
 
  
 
-function click() {
-  console.log("funcionaaa")
-}    
-   
+
   
