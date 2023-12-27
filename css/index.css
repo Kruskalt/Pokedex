@@ -15,6 +15,11 @@ footer {
     background-color: #863b3b;
 
 }
+td{
+  font-size: 50px;
+  
+}
+
 
 .modal {
     position: fixed;
@@ -48,12 +53,11 @@ footer {
     animation-duration: 0.5s
     
 }
-h1{
-  
-    
-}
+
 #nombre-pokemon{
   text-align: center;
+  background-color:gray;
+  color: aliceblue;
 }
 
 /* Add Animation */
@@ -89,4 +93,8 @@ h1{
     align-items: center;
   }
 
+  #ataques img{
+    width: 20px;
+    height: 20px;
+  }
  
