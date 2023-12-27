@@ -11,24 +11,27 @@ let paginaSiguiente=2;
 pedirPagina(0)
 
 
-function pedirPagina(pagina) {
+async function pedirPagina(pagina) {
 $(".row").html('')
-fetch(`${URLAPI}?limit=20&offset=${pagina}`)
-  .then(respuesta => respuesta.json())
-  .then(respuestaJSON => {
-    
 
-    
+ const respuestaPagina= await fetch(`${URLAPI}?limit=20&offset=${pagina}`)
+ const respuestaJSON= await respuestaPagina.json()
+
+
+    try{
+
+      
     for (let i = 0; i < respuestaJSON.results.length; i++) {
- 
-      fetch(`${respuestaJSON.results[i].url}`).then(pokemon => pokemon.json())
-        .then(pokemonJSON => {
+      
 
-          const imagenPokemon = pokemonJSON.sprites.front_default
-          const idPokemon = pokemonJSON.id
-          const nombrePokemon= pokemonJSON.species.name
+      const infoPokemon= await pedirPokemon(`${respuestaJSON.results[i].url}`)  
+      
 
-          console.log(pokemonJSON)
+          const imagenPokemon = infoPokemon.sprites.front_default
+          const idPokemon = infoPokemon.id
+          const nombrePokemon= infoPokemon.species.name
+
+          
           const card = $(`
               <div class="col">
               <div class="card main__card" style=" display:inline-block" >
@@ -45,15 +48,24 @@ fetch(`${URLAPI}?limit=20&offset=${pagina}`)
           })
           
           $(".row").append(card);
-      })
+      
     }
 
-  })
-  .catch(error => console.error("FALLÓ", error));
+    }catch(error){
+      console.error("FALLÓ", error)
+    }
+
+    
 
 }
 
- 
+async function pedirPokemon(url) {
+        const respuesta = await fetch(url);
+        const respuestaJson = await respuesta.json();
+        console.log(respuestaJson)
+        return respuestaJson
+  
+ }
 
 
   
