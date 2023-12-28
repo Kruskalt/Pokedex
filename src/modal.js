@@ -1,13 +1,18 @@
 const modal = document.querySelector("#ventanaModal")
 const span = document.querySelector(".close")
-
+let bandera= false
 
 span.onclick =  function () {
-    modal.style.display = "none"
+    if (bandera) {
+        modal.style.display = "none"
+        bandera=false
+    }
+    
 }
 window.onclick = function (e) {
-    if (e.target === modal) {
+    if (e.target === modal && bandera) {
         modal.style.display = "none"
+        bandera=false
     }
 }   
     
@@ -56,12 +61,18 @@ window.onclick = function (e) {
                     AgregarTipoEnLaTabla(carta.types[0])
                     AgregarAtaquesEnLaTabla(carta.attacks)
 
+                    if (carta.abilities!=undefined) {
+                         AgregarHabilidadEnLaTabla(carta.abilities[0])
+                    }
+
+                    AgregarIlustradorEnLaTabla(carta.artist)
+                    
                     break
                 }
 
             }
 
-
+            bandera=true
 
 
         }))
@@ -74,76 +85,17 @@ window.onclick = function (e) {
     
 
 }
-function AgregarTipoEnLaTabla(tipo) {
-    const tdElementTipo = document.createElement("td")
-    const imagen = document.createElement("img")
-    if (tipo==="Grass") {
-        
-        imagen.src="imagenes/planta.png"
-        tdElementTipo.appendChild(imagen)
-        document.querySelectorAll("tr")[1].appendChild(tdElementTipo)
-    }
-    if (tipo==="Fire") {
-        imagen.src="imagenes/fuego_chico.png"
-        //imagen.width="91px"
-        //imagen.height="92px"
-        tdElementTipo.appendChild(imagen)
-        document.querySelectorAll("tr")[1].appendChild(tdElementTipo)
-    }
-    if (tipo==="Colorless") {
-        imagen.src="imagenes/basica.png"
-        //imagen.width="91px"
-        //imagen.height="92px"
-        tdElementTipo.appendChild(imagen)
-        document.querySelectorAll("tr")[1].appendChild(tdElementTipo)
-    }
-    if (tipo==="Psychic") {
-        imagen.src="imagenes/psiquico.png"
-        //imagen.width="91px"
-        //imagen.height="92px"
-        tdElementTipo.appendChild(imagen)
-        document.querySelectorAll("tr")[1].appendChild(tdElementTipo)
-    }
-    if (tipo==="Fairy") {
-        imagen.src="imagenes/hada.png"
-        //imagen.width="91px"
-        //imagen.height="92px"
-        tdElementTipo.appendChild(imagen)
-        document.querySelectorAll("tr")[1].appendChild(tdElementTipo)
-    }
-    if (tipo==="Lightning") {
-        imagen.src="imagenes/electrico.png"
-        //imagen.width="91px"
-        //imagen.height="92px"
-        tdElementTipo.appendChild(imagen)
-        document.querySelectorAll("tr")[1].appendChild(tdElementTipo)
-    }
-    if (tipo==="Water") {
-        imagen.src="imagenes/agua.png"
-        //imagen.width="91px"
-        //imagen.height="92px"
-        tdElementTipo.appendChild(imagen)
-        document.querySelectorAll("tr")[1].appendChild(tdElementTipo)
-    }
-    if (tipo==="Fighting") {
-        imagen.src="imagenes/lucha.png"
-        //imagen.width="91px"
-        //imagen.height="92px"
-        tdElementTipo.appendChild(imagen)
-        document.querySelectorAll("tr")[1].appendChild(tdElementTipo)
-    }
-    if (tipo==="Metal") {
-        imagen.src="imagenes/metal.png"
-        //imagen.width="91px"
-        //imagen.height="92px"
-        tdElementTipo.appendChild(imagen)
-        document.querySelectorAll("tr")[1].appendChild(tdElementTipo)
-    }
+
+function AgregarIlustradorEnLaTabla(ilustrador) {
+    const $tdIlustrador = document.createElement("td")
     
-    
+
+    $tdIlustrador.textContent=ilustrador
+    $tdIlustrador.style.fontSize="20px"
+
+    document.querySelectorAll("tr")[4].appendChild($tdIlustrador)
     
 }
-
 
 function AgregarPsEnLaTabla(hp) {
     const tdElementPS = document.createElement("td")
@@ -158,6 +110,24 @@ function AgregarSubtypeEnLaTabla(subtype) {
     tdElementPS.textContent = `Pokemon ${subtype}`
     
     document.querySelectorAll("tr")[0].appendChild(tdElementPS)
+}
+
+function AgregarHabilidadEnLaTabla(habilidad) {
+    
+    const $tdHabilidad = document.createElement("td")
+    const $habilidadTexto = document.createElement("p")
+    const $trHabilidad=document.querySelectorAll("tr")[3]
+    
+
+    $habilidadTexto.textContent=habilidad.text
+    $habilidadTexto.style.fontSize="10px"
+    
+    $tdHabilidad.style.fontSize="20px"
+    $tdHabilidad.textContent= habilidad.name 
+
+    $tdHabilidad.appendChild($habilidadTexto)
+
+    $trHabilidad.appendChild($tdHabilidad)
 }
 function AgregarAtaquesEnLaTabla(arrayAtaques) {
     
@@ -188,73 +158,45 @@ function AgregarAtaquesEnLaTabla(arrayAtaques) {
 }
 
 
-function agregarCostoEnergiaDeUnAtaque(ataque,arrayEnergia) {
-    arrayEnergia.forEach(tipoEnergia => {
-        console.log(tipoEnergia)
-        const $imagenCostoEnergia= document.createElement("img")
-        if (tipoEnergia==="Fire") {
-            $imagenCostoEnergia.src="imagenes/fuego_chico.png"
-            ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
-        }
-        if (tipoEnergia==="Colorless") {
-            $imagenCostoEnergia.src="imagenes/basica.png"
-            ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
-        }
-        if (tipoEnergia==="Grass") {
-            $imagenCostoEnergia.src="imagenes/planta.png"
-            ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
-        }
-        if (tipoEnergia==="Psychic") {
-            $imagenCostoEnergia.src="imagenes/psiquico.png"
-            ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
-        }
-        if (tipoEnergia==="Fairy") {
-            $imagenCostoEnergia.src="imagenes/hada.png"
-            ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
-        }
-        if (tipoEnergia==="Lightning") {
-            $imagenCostoEnergia.src="imagenes/electrico.png"
-            ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
-        }
-        if (tipoEnergia==="Water") {
-            $imagenCostoEnergia.src="imagenes/agua.png"
-            ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
-        }
-        if (tipoEnergia==="Fighting") {
-            $imagenCostoEnergia.src="imagenes/lucha.png"
-            ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
-        }
-        if (tipoEnergia==="Metal") {
-            $imagenCostoEnergia.src="imagenes/metal.png"
-            ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
-        }
-    });
-}
+
 
 function renovarModal() {
-    document.querySelectorAll("tr")[0].lastChild.remove()
-
     document.querySelector("#imagen-modal").src = ""
     document.querySelector("h2").textContent = ""
 
-     const $trAtaques= document.querySelectorAll("tr")[2].querySelectorAll("td")
-    
-     $trAtaques.forEach(element => {
-        element.remove()
-     });
+    document.querySelectorAll("tr")[0].lastChild.remove()
 
-     const $trTipoPs= document.querySelectorAll("tr")[1].querySelectorAll("td")
+    const $trTipoPs= document.querySelectorAll("tr")[1].querySelectorAll("td")
      $trTipoPs.forEach(element => {
         element.remove()
      });
+
+     const $trAtaques= document.querySelectorAll("tr")[2].querySelectorAll("td")
+
+     $trAtaques.forEach(element => {
+        element.remove()
+     });
+    
+
+    if (document.querySelectorAll("tr")[3].lastChild!=document.querySelector("#habilidad")) {
+        
+        document.querySelectorAll("tr")[3].lastChild.remove()
+    }
+
+    if (document.querySelectorAll("tr")[4].lastChild!=document.querySelector("#ilustrador")) {
+        
+        document.querySelectorAll("tr")[4].lastChild.remove()
+    }
+    
+
+    
+
+    
+
+     
+    
+    
+
+     
     
 }
