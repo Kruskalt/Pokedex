@@ -91,7 +91,7 @@ function AgregarIlustradorEnLaTabla(ilustrador) {
     
 
     $tdIlustrador.textContent=ilustrador
-    $tdIlustrador.style.fontSize="20px"
+    
 
     document.querySelectorAll("tr")[4].appendChild($tdIlustrador)
     
@@ -100,7 +100,7 @@ function AgregarIlustradorEnLaTabla(ilustrador) {
 function AgregarPsEnLaTabla(hp) {
     const tdElementPS = document.createElement("td")
     tdElementPS.textContent = `PS${hp}`
-    tdElementPS.style.fontSize= "50px"
+    
     document.querySelectorAll("tr")[1].appendChild(tdElementPS)
 }
 
@@ -122,7 +122,7 @@ function AgregarHabilidadEnLaTabla(habilidad) {
     $habilidadTexto.textContent=habilidad.text
     $habilidadTexto.style.fontSize="10px"
     
-    $tdHabilidad.style.fontSize="20px"
+    
     $tdHabilidad.textContent= habilidad.name 
 
     $tdHabilidad.appendChild($habilidadTexto)

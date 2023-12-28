@@ -100,10 +100,10 @@ td{
 
 
   table {
-    width: 100%;
-      max-width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
+      width: 100% !important ;
+      max-width: 100% !important;
+      border-collapse: collapse !important;
+      margin-bottom: 20px !important;
   }
 
   th, td {
@@ -124,7 +124,20 @@ td{
       display: block;
       width: 100%;
       box-sizing: border-box;
+      font-size: 12px;
   }
+  .modal-content{
+    overflow-x: auto;
+      display: block;
+      width: 100%;
+  }
+  #modal-info {
+    display: block !important;
+    flex-direction: column; /* Cambia la dirección de flex a columna en pantallas pequeñas */
+     /* Centra los elementos en pantallas pequeñas */
+  }
+
+  
 }
 
 #logo{
