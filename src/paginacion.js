@@ -1,6 +1,10 @@
 const $pageItems= document.querySelectorAll(".page-item a")
 const paginasMaximo=65
+const offsetPagina=20
 
+let paginaActual=1;
+let paginaAnterior=0;
+let paginaSiguiente=2;
 
 $pageItems.forEach(elem=>{
   $(elem).on("click",function () {
@@ -17,6 +21,7 @@ $pageItems.forEach(elem=>{
 function moverseApaginaSiguiente(elem) {
   
   if (paginaSiguiente<=paginasMaximo && paginaSiguiente!=undefined) {
+    
   paginaActual = paginaActual+1
   paginaAnterior = paginaActual-1;
   paginaSiguiente = paginaActual + 1;

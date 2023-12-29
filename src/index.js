@@ -1,11 +1,9 @@
 
 
 const URLAPI = "https://pokeapi.co/api/v2/pokemon"
-const offsetPagina=20
 
-let paginaActual=1;
-let paginaAnterior=0;
-let paginaSiguiente=2;
+
+
 ///https://pokeapi.co/api/v2/pokemon?limit=20&offset=0
 
 pedirPagina(0)
@@ -20,8 +18,8 @@ $(".row").html('')
 
     try{
 
-      
-    for (let i = 0; i < respuestaJSON.results.length; i++) {
+    const pokemons =  respuestaJSON.results  
+    for (let i = 0; i < pokemons.length; i++) {
       
 
       const infoPokemon= await pedirPokemon(`${respuestaJSON.results[i].url}`)  
@@ -44,7 +42,8 @@ $(".row").html('')
               </div>
             `);
           card.on("click",function() {
-            mostrarCartaPokemon(nombrePokemon)
+            modal.style.display = "block" //que se vea el modal mientras carga la info
+            mostrarModalConInfoDelPokemon(nombrePokemon)
           })
           
           $(".row").append(card);
