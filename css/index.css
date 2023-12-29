@@ -1,7 +1,4 @@
-img {
-    background-color: rgba(255, 255, 255, 0.956);
 
-}
 
 
 footer {
@@ -100,4 +97,60 @@ td{
   #habilidad{
     color: red;
   }
- 
+
+
+  table {
+      width: 100% !important ;
+      max-width: 100% !important;
+      border-collapse: collapse !important;
+      margin-bottom: 20px !important;
+  }
+
+  th, td {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 8px;
+    border: 1px solid #ddd; /* Añadir bordes para mayor claridad */
+  }
+
+  /* Hacer que la tabla sea desplazable horizontalmente en pantallas pequeñas */
+  @media only screen and (max-width: 600px) {
+    .table-container {
+      overflow-x: auto;
+      display: block;
+    }
+    th, td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 12px;
+  }
+  .modal-content{
+    overflow-x: auto;
+      display: block;
+      width: 100%;
+  }
+  #modal-info {
+    display: block !important;
+    flex-direction: column; /* Cambia la dirección de flex a columna en pantallas pequeñas */
+     /* Centra los elementos en pantallas pequeñas */
+  }
+
+  
+}
+
+#logo{
+  width: 30%;
+  height: auto;
+  margin-left: 40%;
+  margin: 0 auto;
+  display: block;
+
+  margin-bottom: 40px;
+  
+  
+}
+
+
+  
