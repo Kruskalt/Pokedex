@@ -15,10 +15,38 @@ context("validarPokedex", () => {
 
     });
     it("validar que aparezca el modal al hacer click en un pokemon", () => {
-      cy.wait(10000)
-      console.log(cy.get(".row .col"))
+      
+      cy.wait(1000)
+      cy.get(".row .col:first").click()
+
+      cy.get(".modal").should("be.visible")
 
     });
+
+    it("validar que borre los sprites actuales al cambiar  de pagina", () => {
+      
+      cy.wait(20000)
+      cy.get(".next").click()
+
+
+      cy.get(".row .col").should("have.length",0)
+      
+
+    });
+    it("validar que cambie de la primer pagina a la segunda ", () => {
+      
+      cy.wait(10000)
+      cy.get(".next").click()
+      cy.wait(10000)
+      let contador=21 //la segunda pagina va desde el pokemon 21 al 40
+      cy.get(".card-title").each(($li, index, $lis) => {
+             cy.wrap($li).should("have.text", `#${contador}`)
+             contador++
+           })
+      
+
+    });
+
     // it("se asegura que aparecen los botones resetear y calcular", () => {
 
     //   cy.get("#cantFamiliares").type("4")

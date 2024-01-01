@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Kruskalt/Pokedex#readme",
   "dependencies": {
+    "@types/jquery": "^3.5.29",
     "jquery": "^3.7.1"
   },
   "devDependencies": {
