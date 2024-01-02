@@ -24,7 +24,7 @@ $(".row").html('')
 
       const infoPokemon= await pedirPokemon(`${respuestaJSON.results[i].url}`)  
       
-
+     
           const imagenPokemon = infoPokemon.sprites.front_default
           const idPokemon = infoPokemon.id
           const nombrePokemon= infoPokemon.species.name
@@ -61,7 +61,7 @@ $(".row").html('')
 async function pedirPokemon(url) {
         const respuesta = await fetch(url);
         const respuestaJson = await respuesta.json();
-        console.log(respuestaJson)
+        
         return respuestaJson
   
  }
