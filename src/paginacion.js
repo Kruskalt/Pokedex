@@ -8,7 +8,7 @@ let paginaSiguiente=2;
 
 $pageItems.forEach(elem=>{
   $(elem).on("click",function () {
-    if (elem.textContent==="Previous" && paginaActual!=undefined && paginaActual!=1) {
+    if (elem.textContent==="Previous" ) {
       moverseApaginaAnterior();
     }
 
@@ -19,8 +19,9 @@ $pageItems.forEach(elem=>{
 })
 
 function moverseApaginaSiguiente(elem) {
+  const $pokemons=document.querySelectorAll(".col") 
   
-  if (paginaSiguiente<=paginasMaximo && paginaSiguiente!=undefined) {
+  if (paginaSiguiente<=paginasMaximo && paginaSiguiente!=undefined && $pokemons.length===20) {
     
   paginaActual = paginaActual+1
   paginaAnterior = paginaActual-1;
@@ -35,7 +36,9 @@ function moverseApaginaSiguiente(elem) {
 }
 
 function moverseApaginaAnterior() {
-  pedirPagina((paginaAnterior - 1) * offsetPagina);
+  const $pokemons=document.querySelectorAll(".col")
+  if ( paginaActual!=undefined && paginaActual!=1 && $pokemons.length===20)  {
+    pedirPagina((paginaAnterior - 1) * offsetPagina);
   let aux = paginaActual;
   paginaActual = paginaAnterior;
   paginaSiguiente = aux;
@@ -44,4 +47,6 @@ function moverseApaginaAnterior() {
   console.log(paginaActual);
   console.log(paginaAnterior);
   console.log(paginaSiguiente);
+  }
+  
 }
