@@ -1,4 +1,5 @@
 
+import * as service from "./servicios.js";
 
 const URLAPI = "https://pokeapi.co/api/v2/pokemon"
 
@@ -10,19 +11,16 @@ pedirPagina(0)
 
 
 async function pedirPagina(pagina) {
-$(".row").html('')
 
- const respuestaPagina= await fetch(`${URLAPI}?limit=20&offset=${pagina}`)
- const respuestaJSON= await respuestaPagina.json()
 
 
     try{
 
-    const pokemons =  respuestaJSON.results  
+    const pokemons =  service.pedirPagina(pagina)
     for (let i = 0; i < pokemons.length; i++) {
       
 
-      const infoPokemon= await pedirPokemon(`${respuestaJSON.results[i].url}`)  
+      const infoPokemon= await service.pedirPokemon(`${respuestaJSON.results[i].url}`)  
       
      
           const imagenPokemon = infoPokemon.sprites.front_default
@@ -58,13 +56,6 @@ $(".row").html('')
 
 }
 
-async function pedirPokemon(url) {
-        const respuesta = await fetch(url);
-        const respuestaJson = await respuesta.json();
-        
-        return respuestaJson
-  
- }
 
 
   
