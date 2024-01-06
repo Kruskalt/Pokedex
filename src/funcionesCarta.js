@@ -1,4 +1,4 @@
-function elegirUnaCarta(listaCartas){
+export function elegirUnaCarta(listaCartas){
      for (let i = 0; i < listaCartas.length; i++) {
 
                 const carta = listaCartas[i]
@@ -13,26 +13,8 @@ function elegirUnaCarta(listaCartas){
                 }
 
             }
+    return listaCartas[0]
 }
 
 
- async function pedirCartasDelPokemon(pokemon){
-    let $imagenCartaCargando=document.querySelector("#imagen-modal")
-    $imagenCartaCargando.src="imagenes/pikachu.gif"
-
-     const requestOptions = {
-        method: 'GET',
-        headers: {
-            'X-Api-Key': 'cff89d55-6a4a-49bd-82a4-caf5688ac947',
-            'Content-Type': 'application/json'
-
-        },
-    };
-
-    const respuestaPagina= await  fetch(`https://api.pokemontcg.io/v2/cards?q=name:${pokemon}`, requestOptions)
-    const respuestaJSON= await respuestaPagina.json()
-
-    return respuestaJSON.data
-
-
-}
+ 
