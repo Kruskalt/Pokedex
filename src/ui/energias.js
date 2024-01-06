@@ -1,68 +1,68 @@
-function agregarCostoEnergiaDeUnAtaque(ataque,arrayEnergia) {
+export function agregarCostoEnergiaDeUnAtaque(ataque,arrayEnergia) {
     arrayEnergia.forEach(tipoEnergia => {
-        console.log(tipoEnergia)
+        
         const $imagenCostoEnergia= document.createElement("img")
         if (tipoEnergia==="Fire") {
             $imagenCostoEnergia.src="imagenes/fuego_chico.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+            
         }
         if (tipoEnergia==="Colorless") {
             $imagenCostoEnergia.src="imagenes/basica.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+           
         }
         if (tipoEnergia==="Grass") {
             $imagenCostoEnergia.src="imagenes/planta.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+            
         }
         if (tipoEnergia==="Psychic") {
             $imagenCostoEnergia.src="imagenes/psiquico.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+            
         }
         if (tipoEnergia==="Fairy") {
             $imagenCostoEnergia.src="imagenes/hada.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+            
         }
         if (tipoEnergia==="Lightning") {
             $imagenCostoEnergia.src="imagenes/electrico.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+           
         }
         if (tipoEnergia==="Water") {
             $imagenCostoEnergia.src="imagenes/agua.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+            
         }
         if (tipoEnergia==="Fighting") {
             $imagenCostoEnergia.src="imagenes/lucha.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+            
         }
         if (tipoEnergia==="Metal") {
             $imagenCostoEnergia.src="imagenes/metal.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+            
         }
         if (tipoEnergia==="Dragon") {
             $imagenCostoEnergia.src="imagenes/dragon.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+            
         }
         if (tipoEnergia==="Darkness") {
             $imagenCostoEnergia.src="imagenes/siniestro.png"
             ataque.appendChild($imagenCostoEnergia)
-            console.log($imagenCostoEnergia)
+            
         }
         
 
     });
 }
 
-function AgregarTipoEnLaTabla(tipo) {
+export function AgregarTipoEnLaTabla(tipo) {
     const tdElementTipo = document.createElement("td")
     const imagen = document.createElement("img")
     if (tipo==="Grass") {

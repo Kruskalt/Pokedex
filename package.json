@@ -2,12 +2,13 @@
   "name": "pokedex",
   "version": "1.0.0",
   "description": "Listar pokemones, y poder cambiar de página. Ver detalles de 1 pokemón, incluyendo al menos 1 foto.",
-  "main": "index.html",
+  "main": "src/index.js",
   "scripts": {
     "servidor": "http-server",
     "cypress-run": "cypress run",
     "cypress-dev": "cypress open",
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
