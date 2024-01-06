@@ -30,14 +30,14 @@ async function analizarADondeSeQuiereMover(elem, $pokemons) {
   const cargaronTodosLosPkEnPantalla= $pokemons.length === 20
 
   if (elem.textContent === "Previous" && cargaronTodosLosPkEnPantalla) {
-
-    mostrarSprites(await pedirPagina(moverseApaginaAnterior()));
+    console.log("entro anterior")
+     mostrarSprites(await pedirPagina( moverseApaginaAnterior()));
 
   }
 
   if (elem.textContent === "Next" && cargaronTodosLosPkEnPantalla) {
 
-    mostrarSprites(await pedirPagina(moverseApaginaSiguiente()));
+   mostrarSprites(await pedirPagina(moverseApaginaSiguiente()));
   }
 
   if (elem.textContent === "+5" && cargaronTodosLosPkEnPantalla) {
@@ -76,7 +76,7 @@ async function analizarADondeSeQuiereMover(elem, $pokemons) {
     paginaSiguiente = aux;
     paginaAnterior = paginaActual - 1;
     document.querySelector("#numero-pagina").textContent = `${paginaActual}/50`
-    return (paginaAnterior - 1) * offsetPagina
+    return (paginaActual - 1) * offsetPagina
   }
 }
 function moverse5paginasAdelante() {

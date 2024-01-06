@@ -12,7 +12,7 @@ export async function pedirPagina(pagina = 0) {
     
     const respuestaPagina = await fetch(`${URLAPI}?limit=20&offset=${pagina}`)
     const respuestaJSON =  await respuestaPagina.json()
-
+    
     return respuestaJSON.results  
 }
 
