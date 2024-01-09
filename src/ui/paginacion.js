@@ -1,4 +1,4 @@
-import { pedirPagina } from "../servicios.js";
+
 import { mostrarSprites } from "./sprites.js";
 
 const $pageItems = document.querySelectorAll(".page-item a")
@@ -10,7 +10,7 @@ let paginaActual = 1;
 let paginaAnterior = 0;
 let paginaSiguiente = 2;
 
-export async function captarMovimientoDePagina() {
+export async function captarMovimientoDePagina(funcionCallback) {
   
  
   $pageItems.forEach(elem => {
@@ -21,33 +21,33 @@ export async function captarMovimientoDePagina() {
 
   
 
-      await analizarADondeSeQuiereMover(elem, $pokemons);
+      await analizarADondeSeQuiereMover(elem, $pokemons,funcionCallback);
     })
   })
 }
 
-async function analizarADondeSeQuiereMover(elem, $pokemons) {
+async function analizarADondeSeQuiereMover(elem, $pokemons,funcionCallback) {
   const cargaronTodosLosPkEnPantalla= $pokemons.length === 20
 
   if (elem.textContent === "Previous" && cargaronTodosLosPkEnPantalla) {
-    console.log("entro anterior")
-     mostrarSprites(await pedirPagina( moverseApaginaAnterior()));
+    
+     mostrarSprites(await funcionCallback( moverseApaginaAnterior()));
 
   }
 
   if (elem.textContent === "Next" && cargaronTodosLosPkEnPantalla) {
 
-   mostrarSprites(await pedirPagina(moverseApaginaSiguiente()));
+   mostrarSprites(await funcionCallback(moverseApaginaSiguiente()));
   }
 
   if (elem.textContent === "+5" && cargaronTodosLosPkEnPantalla) {
 
-    mostrarSprites(await pedirPagina(moverse5paginasAdelante()));
+    mostrarSprites(await funcionCallback(moverse5paginasAdelante()));
   }
 
   if (elem.textContent === "-5" && cargaronTodosLosPkEnPantalla) {
 
-    mostrarSprites(await pedirPagina(moverse5paginasAtras()));
+    mostrarSprites(await funcionCallback(moverse5paginasAtras()));
   }
 }
 
