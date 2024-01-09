@@ -16,7 +16,7 @@ async function inicializar() {
    
     await mostrarSprites(await service.pedirPagina())
     
-    paginacion.captarMovimientoDePagina()
+    paginacion.captarMovimientoDePagina(service.pedirPagina)
 }
 
 
