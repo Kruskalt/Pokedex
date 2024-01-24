@@ -81,19 +81,19 @@ function ocultarTablaConInfoDeLaCarta() {
 
 function agregarInfoCartaAlModal(carta) {
     let $imagenCartaCargada = document.querySelector("#imagen-modal")
-    $imagenCartaCargada.src = carta.images.small
+    $imagenCartaCargada.src = carta.getImagen()
 
 
-    AgregarSubtypeEnLaTablaDelModal(carta.subtypes[0])
-    AgregarPsEnLaTablaDelModal(carta.hp)
-    AgregarTipoEnLaTabla(carta.types[0])
-    AgregarAtaquesEnLaTablaDelModal(carta.attacks)
+    AgregarSubtypeEnLaTablaDelModal(carta.getSubtipo())
+    AgregarPsEnLaTablaDelModal(carta.getvida())
+    AgregarTipoEnLaTabla(carta.getTipo())
+    AgregarAtaquesEnLaTablaDelModal(carta.getAtaques())
 
     if (carta.abilities != undefined) {
-        AgregarHabilidadEnLaTabla(carta.abilities[0])
+        AgregarHabilidadEnLaTabla(carta.getHabilidad())
     }
 
-    AgregarIlustradorEnLaTabla(carta.artist)
+    AgregarIlustradorEnLaTabla(carta.getArtista())
 }
 
 
