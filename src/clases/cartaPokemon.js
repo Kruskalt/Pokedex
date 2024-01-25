@@ -9,7 +9,7 @@ export class CartaPokemon{
     artista;
     
 
-    constructor(vida,fechaSalida,imagen,tipo,subtipo,ataques,habilidad,artista){
+    constructor(vida,fechaSalida,imagen,tipo,subtipo,ataques=[],habilidad=[],artista){
         this.vida=vida;
         this.fechaSalida=fechaSalida
         this.imagen=imagen

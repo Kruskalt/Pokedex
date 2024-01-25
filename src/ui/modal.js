@@ -157,11 +157,11 @@ function AgregarAtaquesEnLaTablaDelModal(arrayAtaques) {
 
     arrayAtaques.forEach(ataque => {
 
-        const $ataque = crearElementoAtaque(ataque.name, ataque.damage)
+        const $ataque = crearElementoAtaque(ataque.getnombre(), ataque.getcantidadDaño())
 
-        $ataque.appendChild(crearElementoDescripcionDelAtaque(ataque.text))
+        $ataque.appendChild(crearElementoDescripcionDelAtaque(ataque.getdescripcion()))
 
-        agregarCostoEnergiaDeUnAtaque($ataque, ataque.cost)
+        agregarCostoEnergiaDeUnAtaque($ataque, ataque.getcostoEnergia())
 
         $filaAtaquesEnLaTabla.appendChild($ataque)
     });

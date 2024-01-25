@@ -8,7 +8,7 @@
     "cypress-run": "cypress run",
     "cypress-dev": "cypress open",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:ui:dev":"run-p servidor cypress-dev"
+    "test:ui:dev": "run-p servidor cypress-dev"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/Kruskalt/Pokedex#readme",
   "dependencies": {
     "@types/jquery": "^3.5.29",
+    "http-server": "^14.1.1",
     "jquery": "^3.7.1"
   },
   "devDependencies": {
