@@ -24,23 +24,43 @@ function borrarSpritesAnteriores() {
   $(".row").html('');
 }
 
-function agregarSpritePokemonAlMain(imagenPokemon, idPokemon, nombrePokemon) {
-  const card = $(`
-                <div class="col">
-                <div class="card main__card" style=" display:inline-block" >
-                  <img src="${imagenPokemon}" class="card-img-top" alt="...">
-                  <div class="card-body">
-                      <h5 class="card-title">#${idPokemon}</h5>
-                      
-                  </div>
-                </div>
-                </div>
-              `);
-  card.on("click", function () {
-    document.querySelector("#ventanaModal").style.display = "block" //que se vea el modal mientras carga la info
-    funcionesModal.renovarModal()
-    funcionesModal.mostrarModalConInfoDelPokemon(nombrePokemon)
-  })
+export function agregarSpritePokemonAlMain(imagenPokemon, idPokemon, nombrePokemon) {
+  // Crear elementos y configurar sus atributos y contenido
+  const colDiv = document.createElement('div');
+  colDiv.classList.add('col');
 
-  $(".row").append(card);
+  const cardDiv = document.createElement('div');
+  cardDiv.classList.add('card', 'main__card');
+  cardDiv.style.display = 'inline-block';
+
+  const img = document.createElement('img');
+  img.src = imagenPokemon;
+  img.classList.add('card-img-top');
+  img.alt = '...';
+
+  const cardBodyDiv = document.createElement('div');
+  cardBodyDiv.classList.add('card-body');
+
+  const title = document.createElement('h5');
+  title.classList.add('card-title');
+  title.textContent = `#${idPokemon}`;
+
+  // Agregar elementos al árbol DOM
+  cardBodyDiv.appendChild(title);
+  cardDiv.appendChild(img);
+  cardDiv.appendChild(cardBodyDiv);
+  colDiv.appendChild(cardDiv);
+
+  // Asignar evento click al elemento creado
+  colDiv.addEventListener('click', function () {
+    const ventanaModal = document.querySelector('#ventanaModal');
+    ventanaModal.style.display = 'block';
+    funcionesModal.renovarModal();
+    funcionesModal.mostrarModalConInfoDelPokemon(nombrePokemon);
+  });
+
+  // Agregar el elemento creado al elemento con clase "row"
+  const rowElement = document.querySelector('.row');
+  rowElement.appendChild(colDiv);
+
 }

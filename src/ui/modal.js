@@ -8,12 +8,14 @@ const $cerrarModal = document.querySelector(".close")
 
 let terminoDeCargarElModal = false
 
+if ($cerrarModal) {
 $cerrarModal.onclick = function () {
     if (terminoDeCargarElModal) {
         $modal.style.display = "none"
         terminoDeCargarElModal = false
     }
 
+}
 }
 window.onclick = function (e) {
     if (e.target === $modal && terminoDeCargarElModal) {
